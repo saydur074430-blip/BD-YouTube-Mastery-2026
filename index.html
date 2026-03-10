@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BD YouTube Mastery 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap');
+        
+        :root {
+            --primary: #ff0000;
+        }
+        body {
+            font-family: 'Noto Sans Bengali', system-ui, sans-serif;
+        }
+        .mobile-container {
+            max-width: 480px;
+            margin: 0 auto;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            min-height: 100vh;
+        }
+        .tail-container {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .tab-active {
+            border-bottom: 3px solid #ff0000;
+            color: white;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #1a1a1a, #330000);
+        }
+        .nav-link {
+            transition: all 0.2s;
+        }
+        .nav-link:hover {
+            color: #ff0000;
+            transform: scale(1.05);
+        }
+        .quiz-option {
+            transition: all 0.2s;
+        }
+        .quiz-option:hover {
+            background-color: #2a2a2a;
+            transform: translateX(8px);
+        }
+        .selected {
+            background-color: #ff0000 !important;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200 min-h-screen pb-20 mobile-container">
+
+    <!-- TOP NAV -->
+    <nav class="bg-black border-b border-zinc-800 fixed top-0 left-0 right-0 z-50 max-w-[480px] mx-auto">
+        <div class="flex items-center justify-between px-4 py-4">
+            <div class="flex items-center gap-2">
+                <i class="fa-brands fa-youtube text-3xl text-red-600"></i>
+                <div>
+                    <span class="text-xl font-bold tracking-tighter">BD YouTube</span>
+                    <span class="text-xs block -mt-1 text-red-500">2026 Mastery</span>
+                </div>
+            </div>
+            <button onclick="toggleMenu()" id="menu-btn"
+                class="w-10 h-10 flex items-center justify-center text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-50 pt-20 max-w-[480px] mx-auto">
+        <div class="px-6 py-8 flex flex-col gap-6 text-lg">
+            <a onclick="closeMenu();document.getElementById('section-time').scrollIntoView({behavior:'smooth'})" class="nav-link flex items-center gap-3">
+                <i class="fa-solid fa-clock w-6"></i> সেরা আপলোড সময়
+            </a>
+            <a onclick="closeMenu();document.getElementById('section-algo').scrollIntoView({behavior:'smooth'})" class="nav-link flex items-center gap-3">
+                <i class="fa-solid fa-brain w-6"></i> অ্যালগরিদম ব্যাখ্যা
+            </a>
+            <a onclick="closeMenu();document.getElementById('section-gemini').scrollIntoView({behavior:'smooth'})" class="nav-link flex items-center gap-3">
+                <i class="fa-solid fa-gem w-6"></i> Gemini AI ইন্টিগ্রেশন
+            </a>
+            <a onclick="closeMenu();document.getElementById('section-tips').scrollIntoView({behavior:'smooth'})" class="nav-link flex items-center gap-3">
+                <i class="fa-solid fa-lightbulb w-6"></i> প্র্যাকটিক্যাল টিপস
+            </a>
+            <a onclick="closeMenu();document.getElementById('section-quiz').scrollIntoView({behavior:'smooth'})" class="nav-link flex items-center gap-3">
+                <i class="fa-solid fa-question-circle w-6"></i> কুইজ টেস্ট করো
+            </a>
+            <div class="mt-auto pt-10">
+                <button onclick="closeMenu()" 
+                    class="w-full bg-red-600 hover:bg-red-700 py-4 rounded-2xl text-lg font-medium">
+                    মেনু বন্ধ করো
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero-bg pt-20 pb-12 px-5 text-center">
+        <h1 class="text-4xl font-bold leading-tight">বাংলাদেশ থেকে<br>YouTube &amp; Social Media<br><span class="text-red-500">সফলতার গাইড ২০২৬</span></h1>
+        <p class="mt-4 text-zinc-400 text-lg">পুরো চ্যাটের সব আলোচনা এক জায়গায় • Fully Interactive</p>
+        
+        <div class="mt-8 flex justify-center gap-6">
+            <button onclick="document.getElementById('section-time').scrollIntoView({behavior:'smooth'})"
+                class="bg-red-600 hover:bg-red-700 px-8 py-4 rounded-3xl font-medium flex items-center gap-2">
+                <i class="fa-solid fa-clock"></i> শুরু করো
+            </button>
+        </div>
+    </div>
+
+    <div class="tail-container px-5">
+
+        <!-- SECTION 1: সেরা আপলোড সময় -->
+        <section id="section-time" class="pt-12">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <span class="text-red-500">১.</span> সেরা আপলোড সময়
+            </h2>
+            
+            <!-- YouTube Times -->
+            <div class="bg-zinc-900 rounded-3xl p-6 mb-8">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold flex items-center gap-2"><i class="fa-brands fa-youtube text-red-600"></i> ইউটিউব</h3>
+                    <span class="text-xs bg-zinc-800 px-3 py-1 rounded-full">BST (UTC+6)</span>
+                </div>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div class="bg-zinc-800 p-4 rounded-2xl">
+                        <div class="text-red-400 text-xs">সাধারণ সেরা</div>
+                        <div class="text-2xl font-bold">বিকেল ২টা – ৫টা</div>
+                        <div class="text-xs text-zinc-400 mt-1">বিশেষ করে ৩:০০ – ৪:০০</div>
+                    </div>
+                    <div class="bg-zinc-800 p-4 rounded-2xl">
+                        <div class="text-red-400 text-xs">সেরা দিন</div>
+                        <div class="text-2xl font-bold">বুধবার &amp; মঙ্গলবার</div>
+                    </div>
+                </div>
+                <div onclick="this.classList.toggle('line-through');this.classList.toggle('text-zinc-500')" 
+                    class="mt-6 text-xs bg-zinc-800 hover:bg-zinc-700 cursor-pointer px-5 py-4 rounded-2xl flex justify-between items-center">
+                    <span>রাত ৮-১০টা (ডিনার টাইম)</span>
+                    <i class="fa-solid fa-check"></i>
+                </div>
+            </div>
+
+            <!-- Social Media Interactive Tabs -->
+            <h3 class="text-lg font-medium mb-4">সোশ্যাল মিডিয়া (ফেসবুক, ইনস্টা, টিকটক)</h3>
+            <div class="flex border-b border-zinc-700 mb-4">
+                <button onclick="switchSocialTab(0)" id="tab0"
+                    class="tab-active flex-1 py-3 text-center font-medium">ফেসবুক</button>
+                <button onclick="switchSocialTab(1)" id="tab1"
+                    class="flex-1 py-3 text-center font-medium text-zinc-400">ইনস্টাগ্রাম</button>
+                <button onclick="switchSocialTab(2)" id="tab2"
+                    class="flex-1 py-3 text-center font-medium text-zinc-400">টিকটক</button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div id="social-content-0" class="tab-content">
+                <table class="w-full text-sm">
+                    <tr class="border-b border-zinc-800"><td class="py-4">সকাল</td><td class="text-right py-4">৯-১০টা</td></tr>
+                    <tr class="border-b border-zinc-800"><td class="py-4">দুপুর</td><td class="text-right py-4">১২-২টা</td></tr>
+                    <tr><td class="py-4 text-red-400 font-medium">রাত (সেরা)</td><td class="text-right py-4 text-red-400 font-medium">৮-১০টা</td></tr>
+                </table>
+            </div>
+            <div id="social-content-1" class="tab-content hidden">
+                <table class="w-full text-sm">
+                    <tr class="border-b border-zinc-800"><td class="py-4">সকাল</td><td class="text-right py-4">৭-৯টা</td></tr>
+                    <tr class="border-b border-zinc-800"><td class="py-4">বিকেল</td><td class="text-right py-4">৩-৬টা</td></tr>
+                    <tr><td class="py-4 text-red-400 font-medium">রাত</td><td class="text-right py-4 text-red-400 font-medium">৮-১০টা</td></tr>
+                </table>
+            </div>
+            <div id="social-content-2" class="tab-content hidden">
+                <table class="w-full text-sm">
+                    <tr class="border-b border-zinc-800"><td class="py-4">বিকেল</td><td class="text-right py-4">৪-৭টা</td></tr>
+                    <tr><td class="py-4 text-red-400 font-medium">রাত (সেরা)</td><td class="text-right py-4 text-red-400 font-medium">৮-১১টা</td></tr>
+                </table>
+            </div>
+
+            <div class="mt-8 text-xs text-center text-zinc-500">
+                সবচেয়ে গুরুত্বপূর্ণ: নিজের Analytics চেক করো!
+            </div>
+        </section>
+
+        <!-- SECTION 2: অ্যালগরিদম -->
+        <section id="section-algo" class="pt-16">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <span class="text-red-500">২.</span> ইউটিউব অ্যালগরিদম কীভাবে কাজ করে
+            </h2>
+            
+            <div class="bg-zinc-900 rounded-3xl p-6 mb-8">
+                <p class="text-sm leading-relaxed">
+                    অ্যালগরিদমের একমাত্র লক্ষ্য: <span class="text-red-400 font-medium">দর্শক যত বেশি সময় ইউটিউবে কাটায়</span>।
+                    ভিউ নয় — Watch Time + Satisfaction।
+                </p>
+            </div>
+
+            <!-- 4-Tier Interactive Cards -->
+            <div class="space-y-4">
+                <div onclick="toggleAccordion(this)" class="accordion bg-zinc-900 rounded-3xl overflow-hidden">
+                    <div class="px-6 py-5 flex justify-between items-center cursor-pointer">
+                        <div class="font-medium">Tier 1: Initial Push</div>
+                        <i class="fa-solid fa-chevron-down transition-transform"></i>
+                    </div>
+                    <div class="accordion-content px-6 pb-6 text-sm text-zinc-400">
+                        সাবস্ক্রাইবার + সিমিলার দর্শকদের দেখানো হয়। প্রথম ২৪-৪৮ ঘণ্টা খুব গুরুত্বপূর্ণ।
+                    </div>
+                </div>
+                
+                <div onclick="toggleAccordion(this)" class="accordion bg-zinc-900 rounded-3xl overflow-hidden">
+                    <div class="px-6 py-5 flex justify-between items-center cursor-pointer">
+                        <div class="font-medium">Tier 2: Testing Phase</div>
+                        <i class="fa-solid fa-chevron-down transition-transform"></i>
+                    </div>
+                    <div class="accordion-content px-6 pb-6 text-sm text-zinc-400">
+                        Retention ভালো হলে আরও বড় অডিয়েন্সে টেস্ট।
+                    </div>
+                </div>
+                
+                <div onclick="toggleAccordion(this)" class="accordion bg-zinc-900 rounded-3xl overflow-hidden">
+                    <div class="px-6 py-5 flex justify-between items-center cursor-pointer">
+                        <div class="font-medium">Tier 3: Scaling (ভাইরাল)</div>
+                        <i class="fa-solid fa-chevron-down transition-transform"></i>
+                    </div>
+                    <div class="accordion-content px-6 pb-6 text-sm text-zinc-400">
+                        Homepage, Recommended-এ পুশ।
+                    </div>
+                </div>
+                
+                <div onclick="toggleAccordion(this)" class="accordion bg-zinc-900 rounded-3xl overflow-hidden">
+                    <div class="px-6 py-5 flex justify-between items-center cursor-pointer">
+                        <div class="font-medium">Tier 4: Evergreen</div>
+                        <i class="fa-solid fa-chevron-down transition-transform"></i>
+                    </div>
+                    <div class="accordion-content px-6 pb-6 text-sm text-zinc-400">
+                        বছরের পর বছর ভিউ আসে।
+                    </div>
+                </div>
+            </div>
+
+            <div class="my-10 text-center text-xs uppercase tracking-widest text-zinc-500">সবচেয়ে গুরুত্বপূর্ণ মেট্রিক্স</div>
+            <div class="flex gap-3 overflow-x-auto pb-6 snap-x">
+                <div class="bg-zinc-900 min-w-[160px] snap-center p-5 rounded-3xl text-center">
+                    <div class="text-4xl mb-1">⏱️</div>
+                    <div class="font-medium">Watch Time</div>
+                </div>
+                <div class="bg-zinc-900 min-w-[160px] snap-center p-5 rounded-3xl text-center">
+                    <div class="text-4xl mb-1">📈</div>
+                    <div class="font-medium">Retention %</div>
+                </div>
+                <div class="bg-zinc-900 min-w-[160px] snap-center p-5 rounded-3xl text-center">
+                    <div class="text-4xl mb-1">🖱️</div>
+                    <div class="font-medium">CTR (থাম্বনেইল)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: GEMINI AI -->
+        <section id="section-gemini" class="pt-16">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <span class="text-red-500">৩.</span> Gemini AI ইন্টিগ্রেশন (২০২৬)
+            </h2>
+            
+            <div onclick="toggleGeminiTable()" id="gemini-toggle"
+                class="bg-zinc-900 hover:bg-zinc-800 transition-colors cursor-pointer rounded-3xl p-6 text-center mb-8">
+                <div class="flex items-center justify-center gap-3 text-red-400">
+                    <i class="fa-solid fa-gem"></i>
+                    <span class="font-semibold">Old Algorithm vs Gemini 2026</span>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div id="gemini-table" class="hidden bg-zinc-900 rounded-3xl p-6 text-sm">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-zinc-700">
+                            <th class="py-4 text-left">বিষয়</th>
+                            <th class="py-4 text-red-400">পুরনো</th>
+                            <th class="py-4 text-green-400">Gemini 2026</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-xs">
+                        <tr class="border-b border-zinc-800"><td class="py-4">বিশ্লেষণ</td><td>ট্যাগ+টাইটেল</td><td>Semantic ID (ভিজ্যুয়াল+অডিও+টোন)</td></tr>
+                        <tr class="border-b border-zinc-800"><td class="py-4">প্রধান মেট্রিক</td><td>Retention</td><td>Viewer Satisfaction</td></tr>
+                        <tr><td class="py-4">ছোট চ্যানেলের সুযোগ</td><td>কম</td><td>অনেক বেশি</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-8 bg-gradient-to-br from-red-950/30 to-transparent border border-red-900/50 rounded-3xl p-6 text-sm leading-relaxed">
+                Gemini এখন ভিডিও <strong>দেখে, শোনে ও বোঝে</strong>।<br>
+                শুধু কনটেন্ট কোয়ালিটি + দর্শকের সন্তুষ্টি দেখে পুশ করে।
+            </div>
+        </section>
+
+        <!-- INTERACTIVE NICHE SELECTOR -->
+        <section id="section-tips" class="pt-16">
+            <h2 class="text-3xl font-bold mb-6">তোমার নিশ অনুযায়ী টিপস</h2>
+            
+            <select id="niche-select" onchange="showNicheTips()"
+                class="w-full bg-zinc-900 text-white border-0 rounded-3xl py-5 px-6 text-base focus:outline-none">
+                <option value="">-- তোমার চ্যানেলের নিশ বেছে নাও --</option>
+                <option value="gaming">গেমিং</option>
+                <option value="vlog">ভ্লগ / লাইফস্টাইল</option>
+                <option value="education">এডুকেশন / টিউটোরিয়াল</option>
+                <option value="tech">টেক রিভিউ</option>
+                <option value="entertainment">এন্টারটেইনমেন্ট</option>
+            </select>
+
+            <div id="niche-tips" class="mt-6 min-h-[180px] text-sm bg-zinc-900 rounded-3xl p-6 hidden"></div>
+        </section>
+
+        <!-- QUIZ SECTION -->
+        <section id="section-quiz" class="pt-16 pb-12">
+            <h2 class="text-3xl font-bold mb-8">কুইজ: অ্যালগরিদম কতটা জানো?</h2>
+            
+            <div id="quiz-container" class="bg-zinc-900 rounded-3xl p-8">
+                <div id="question-text" class="text-xl font-medium mb-8"></div>
+                
+                <div id="options" class="space-y-3"></div>
+                
+                <button onclick="nextQuestion()" id="next-btn"
+                    class="hidden w-full mt-10 bg-red-600 py-5 rounded-3xl text-lg font-medium">
+                    পরের প্রশ্ন
+                </button>
+            </div>
+            
+            <div id="quiz-result" class="hidden text-center py-12">
+                <div id="score-text" class="text-6xl font-bold text-red-500"></div>
+                <p class="mt-4 text-zinc-400">তোমার স্কোর!</p>
+                <button onclick="restartQuiz()" 
+                    class="mt-10 bg-zinc-800 hover:bg-zinc-700 px-10 py-4 rounded-3xl">
+                    আবার খেলো
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FLOATING ACTION BUTTON -->
+    <button onclick="window.scrollTo({top:0,behavior:'smooth'})"
+        class="fixed bottom-6 right-6 w-14 h-14 bg-red-600 rounded-3xl flex items-center justify-center shadow-2xl z-50 max-w-[480px] mx-auto">
+        <i class="fa-solid fa-arrow-up text-2xl"></i>
+    </button>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-center text-xs py-8 text-zinc-500 max-w-[480px] mx-auto">
+        <p>© ২০২৬ • বাংলাদেশ থেকে তৈরি</p>
+        <p class="mt-2">সব তথ্য ২০২৫-২০২৬ লেটেস্ট ডেটা অনুযায়ী</p>
+    </footer>
+
+    <script>
+        // Tailwind script run
+        function initializeTailwind() {
+            // Already initialized via CDN
+        }
+
+        // Mobile Menu
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        function closeMenu() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        // Social Tabs
+        let currentTab = 0;
+        function switchSocialTab(n) {
+            document.querySelectorAll('.tab-active').forEach(el => el.classList.remove('tab-active'));
+            document.getElementById('tab' + n).classList.add('tab-active');
+            
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('social-content-' + n).classList.remove('hidden');
+        }
+
+        // Accordion
+        function toggleAccordion(el) {
+            const content = el.querySelector('.accordion-content');
+            const icon = el.querySelector('i');
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Gemini Table Toggle
+        function toggleGeminiTable() {
+            const table = document.getElementById('gemini-table');
+            table.classList.toggle('hidden');
+        }
+
+        // Niche Tips
+        const nicheData = {
+            gaming: "🎮 গেমিং: প্রথম ১৫ সেকেন্ডে হাইলাইট দেখাও। Shorts দিয়ে লং ভিডিওতে ফানেল বানাও। রাত ৮-১১টা সেরা।",
+            vlog: "📹 ভ্লগ: আসল জীবন দেখাও। Gemini ভাইব বুঝে। সকাল ৭-৯টা + রাত ৮টা।",
+            education: "📚 এডুকেশন: Step-by-step + clear visuals। Retention ৭০%+ রাখো। বিকেল ৩-৫টা আপলোড।",
+            tech: "💻 টেক: Comparison + real test। CTR ১০%+ লক্ষ্য। বুধবার সেরা।",
+            entertainment: "😂 এন্টারটেইনমেন্ট: Hook খুব শক্তিশালী। রাত ৯-১১টা + Friday।"
+        };
+        
+        function showNicheTips() {
+            const select = document.getElementById('niche-select');
+            const tipsDiv = document.getElementById('niche-tips');
+            const value = select.value;
+            
+            if (value) {
+                tipsDiv.innerHTML = `<div class="text-red-400 font-medium mb-3">✅ তোমার জন্য স্পেশাল টিপস:</div><p>${nicheData[value]}</p>`;
+                tipsDiv.classList.remove('hidden');
+            } else {
+                tipsDiv.classList.add('hidden');
+            }
+        }
+
+        // Quiz Logic
+        let currentQuestionIndex = 0;
+        let score = 0;
+        
+        const questions = [
+            {
+                q: "অ্যালগরিদমের সবচেয়ে গুরুত্বপূর্ণ মেট্রিক কী?",
+                options: ["ভিউ কাউন্ট", "Watch Time & Retention", "লাইক সংখ্যা", "সাবস্ক্রাইবার"],
+                correct: 1
+            },
+            {
+                q: "Gemini AI কী বুঝে ভিডিও analyze করে?",
+                options: ["শুধু ট্যাগ", "ভিজ্যুয়াল + অডিও + টোন", "শুধু টাইটেল", "ভিউ সংখ্যা"],
+                correct: 1
+            },
+            {
+                q: "প্রথম ২৪ ঘণ্টায় কী সবচেয়ে গুরুত্বপূর্ণ?",
+                options: ["থাম্বনেইল CTR", "কমেন্ট", "শেয়ার", "সবগুলো"],
+                correct: 0
+            }
+        ];
+        
+        function loadQuestion() {
+            const q = questions[currentQuestionIndex];
+            document.getElementById('question-text').innerHTML = q.q;
+            
+            let html = '';
+            q.options.forEach((opt, i) => {
+                html += `<div onclick="selectOption(this, ${i})" 
+                    class="quiz-option bg-zinc-800 hover:bg-zinc-700 px-6 py-5 rounded-2xl cursor-pointer text-base">${opt}</div>`;
+            });
+            document.getElementById('options').innerHTML = html;
+            document.getElementById('next-btn').classList.add('hidden');
+        }
+        
+        function selectOption(el, index) {
+            const q = questions[currentQuestionIndex];
+            document.querySelectorAll('#options > div').forEach(div => {
+                div.classList.remove('selected');
+                if (parseInt(div.getAttribute('onclick').match(/\d+/)[0]) === q.correct) {
+                    div.style.border = '2px solid #22c55e';
+                }
+            });
+            if (index === q.correct) score++;
+            el.classList.add('selected');
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+        
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+        
+        function showResult() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.classList.remove('hidden');
+            document.getElementById('score-text').innerHTML = `${score}/${questions.length} 🎉`;
+        }
+        
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            loadQuestion();
+        }
+
+        // Keyboard shortcut for fun
+        document.addEventListener('keydown', function(e) {
+            if (e.key === '/' && document.getElementById('mobile-menu').classList.contains('hidden')) {
+                toggleMenu();
+            }
+        });
+
+        // Initialize everything
+        window.onload = function() {
+            // Tailwind ready
+            switchSocialTab(0);
+            loadQuestion();
+            
+            // Auto expand first accordion
+            const firstAccordion = document.querySelector('.accordion');
+            if (firstAccordion) {
+                const content = firstAccordion.querySelector('.accordion-content');
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+            
+            console.log('%c✅ BD YouTube Mastery Page Loaded Successfully!', 'color:#ff0000; font-size:13px');
+        };
+    </script>
+</body>
+</html>
